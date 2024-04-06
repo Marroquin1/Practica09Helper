@@ -1,7 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using Practica09Helper.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<equiposDbContext>(opt =>
+opt.UseSqlServer(builder.Configuration.GetConnectionString("equiposDbConnection")
+)
+);
 
 var app = builder.Build();
 
